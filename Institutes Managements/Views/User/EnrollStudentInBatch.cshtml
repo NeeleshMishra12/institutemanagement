@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Enroll Student in a Batch</h2>
+
+<form asp-action="EnrollStudentInBatch" method="post">
+    <div class="form-group">
+        <label for="batch">Batch:</label>
+        <select name="batchId" class="form-control">
+            <option value="">Select a Batch</option>
+            @foreach (var batch in (List<SelectListItem>)ViewData["Batches"])
+            {
+                <option value="@batch.Value">@batch.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="student">Student:</label>
+        <select name="studentId" class="form-control">
+            <option value="">Select a Student</option>
+            @foreach (var student in (List<SelectListItem>)ViewData["Students"])
+            {
+                <option value="@student.Value">@student.Text</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enroll</button>
+</form>

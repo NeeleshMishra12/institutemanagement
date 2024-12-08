@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Institutes_Managements.Models.Entities.Batch
+
+<h2>Assign Instructor to Batch: @ViewData["Batch"].BatchName</h2>
+
+<form asp-action="AssignInstructorToBatch" method="post">
+    <input type="hidden" name="batchId" value="@ViewData["Batch"].Id" />
+
+    <div class="form-group">
+        <label for="instructor">Instructor:</label>
+        <select name="instructorId" class="form-control">
+            <option value="">Select an Instructor</option>
+            @foreach (var instructor in (List<SelectListItem>)ViewData["Instructors"])
+            {
+                <option value="@instructor.Value">@instructor.Text</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Assign</button>
+</form>

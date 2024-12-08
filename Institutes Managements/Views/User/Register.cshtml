@@ -1,0 +1,50 @@
+﻿@model Institutes_Managements.ViewModel.RegisterViewModel
+
+<form method="post">
+    <div class="form-group">
+        <label for="FullName">Full Name</label>
+        <input type="text" class="form-control" id="FullName" name="FullName" required />
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" required />
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" name="Password" required />
+    </div>
+    <div class="form-group">
+        <label for="ContactNumber">Contact Number</label>
+        <input type="text" class="form-control" id="ContactNumber" name="ContactNumber" required />
+    </div>
+    <div class="form-group">
+        <label for="Role">Role</label>
+        <select class="form-control" id="Role" name="Role" required>
+            <option value="Admin">Admin</option>
+            <option value="Instructor">Instructor</option>
+            <option value="Student">Student</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="DateOfBirth">Date of Birth</label>
+        <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" required />
+    </div>
+    <div class="form-group">
+        <label for="Address">Address</label>
+        <textarea class="form-control" id="Address" name="Address" required></textarea>
+    </div>
+    <div class="form-group" id="course-enrolled">
+        <label for="CourseEnrolledId">Course Enrolled (Only for Students)</label>
+        <select class="form-control" id="CourseEnrolledId" name="CourseEnrolledId">
+            <option value="">Select Course</option>
+            @if (ViewData["Courses"] is IEnumerable<SelectListItem> courses)
+            {
+                foreach (var course in courses)
+                {
+                    <option value="@course.Value">@course.Text</option>
+                }
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
